@@ -1,0 +1,82 @@
+PL/SQL kodining bajarilish jarayonini, ayniqsa bytecode ning qanday qilib 
+PL/SQL Engine tomonidan yaratilishi va keyin bu bytecode ning SQL Engine 
+va Oracle tomon ketishini tushunmoqchisiz. Keling, bu jarayonni batafsil tushuntirib beraman.
+
+PL/SQL Kodining Bajarilish Jarayoni
+1. Kod Yozilishi:
+
+Siz PL/SQL kodini yozasiz. Bu kod PL/SQL ning procedural buyruqlari (masalan, IF, LOOP, WHILE) va 
+SQL buyruqlari (SELECT, INSERT, UPDATE, DELETE) ni o'z ichiga olishi mumkin.
+
+2. Kod Tahlili va Kompilyatsiya:
+
+PL/SQL Engine kodni tahlil qiladi (parsing) va sintaksis xatolarni tekshiradi.
+Tahlildan so'ng, kodni bytecode ga kompilyatsiya qiladi. Bytecode — 
+bu Oracle Virtual Machine (OVM) tushunadigan va bajaradigan ichki format.
+
+3. Bytecode ning Bajarilishi:
+
+PL/SQL Engine bytecode ni bajarishni boshlaydi.
+
+Bajarish jarayonida, bytecode ichida uchraydigan buyruqlarga qarab, 
+ularni bajarish uchun tegishli dvigatelga yuboradi:
+    Procedural buyruqlar (masalan, IF, LOOP) — PL/SQL Engine o'zi bajaradi.
+    SQL buyruqlar (masalan, SELECT, INSERT) — SQL Engine ga yuboriladi.
+
+Nega Bytecode Ikki Tarafga Ketadi?
+PL/SQL Engine procedural buyruqlarni bajaradi.
+SQL Engine SQL buyruqlarni bajaradi.
+
+
+PL/SQL dasturida ham procedural, ham SQL buyruqlar mavjud bo'lgani uchun, 
+bytecode ni bajarish jarayonida PL/SQL Engine quyidagicha harakat qiladi:
+
+1. Procedural Buyruqlar uchun:
+
+Bytecode dagi procedural buyruqlarni o'qiydi va o'zi bajaradi.
+Masalan, shartli operatorlar, sikllar, o'zgaruvchilar bilan ishlash.
+
+
+2. SQL Buyruqlar uchun:
+
+Bytecode dagi SQL buyruqlarni aniqlaydi.
+Bu buyruqlarni bajarish uchun SQL Engine ga yuboradi.
+SQL Engine bu buyruqlarni ma'lumotlar bazasida bajaradi.
+Natijalar (agar mavjud bo'lsa) PL/SQL Engine ga qaytariladi.
+
+3. Oracle Ma'lumotlar Bazasi Ichidagi Hamkorlik
+
+PL/SQL Engine va SQL Engine — ikkalasi ham Oracle ma'lumotlar bazasining tarkibiy qismi.
+Ular birgalikda ishlaydi:
+    PL/SQL Engine procedural mantiqni boshqaradi.   
+    SQL Engine ma'lumotlar bazasi bilan ishlaydigan SQL buyruqlarni bajaradi.
+
+
+Xulosa:
+
+Bytecode — PL/SQL Engine tomonidan yaratilgan va Oracle Virtual Machine tomonidan bajariladigan kod.
+PL/SQL Engine bytecode ni bajaradi va procedural buyruqlarni o'zi amalga oshiradi.
+SQL Buyruqlar bytecode ichida uchraganda, PL/SQL Engine ularni SQL Engine ga yuboradi.
+SQL Engine SQL buyruqlarni bajaradi va natijani qaytaradi.
+Shunday qilib, bytecode ning bajarilishi jarayonida kod ikki tarafga "ketadi": 
+biri PL/SQL Engine (procedural buyruqlar), ikkinchisi SQL Engine (SQL buyruqlar).
+
+Nima Uchun Bunday Jarayon?
+
+    Ixtisoslashuv: PL/SQL Engine procedural mantiqni boshqarish uchun optimallashtirilgan, SQL Engine esa ma'lumotlar bazasi bilan ishlash uchun.
+    Samaradorlik: Har bir dvigatel o'z ishini samarali bajaradi, bu umumiy jarayonni tezlashtiradi.
+    Modulyarlik: Kodni ajratish va boshqarish osonlashadi.
+
+
+Umumiy Jarayonni Yana Bir Bor Ko'rib Chiqamiz
+
+Kod yoziladi va PL/SQL Engine ga yuboriladi.
+PL/SQL Engine kodni tahlil qiladi va bytecode ga kompilyatsiya qiladi.
+
+Bytecode bajariladi:
+
+    Procedural buyruqlar PL/SQL Engine tomonidan bajariladi.
+    SQL buyruqlar SQL Engine ga yuboriladi.
+
+SQL Engine SQL buyruqlarni bajaradi va natijani PL/SQL Engine ga qaytaradi.
+PL/SQL Engine dastur bajarilishini davom ettiradi.
