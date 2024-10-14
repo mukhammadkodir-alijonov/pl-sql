@@ -1,0 +1,59 @@
+PL/SQL (Procedural Language/Structured Query Language) anonim bloklari 
+haqida qisqacha tushuntiradigan bo'lsak, bu SQL buyruqlarini PL/SQL orqali
+boshqarish va bir qator amallarni bajarishga imkon beruvchi dasturiy koddir. 
+Anonim bloklar faqat bir marta ishlatiladigan yoki saqlash kerak bo'lmagan vaqtinchalik kodlar 
+uchun mo'ljallangan bo'ladi.
+
+PL/SQL anonim blokning asosiy tuzilishi uch qismdan iborat:
+
+Deklaratsiya qismi (optional): Bu qismda o'zgaruvchilar, konstantalar va boshqa ma'lumotlar turlari e'lon qilinadi. 
+Deklaratsiya qismi kerak bo'lmaganda, uni o'z ichiga olmaslik mumkin.
+
+DECLARE
+  -- O'zgaruvchilarni e'lon qilish
+  x NUMBER := 10;
+  y NUMBER := 20;
+
+
+  Bajariladigan qism (mandatory): Bu qismda asosiy ish bajariladi. 
+  SQL buyruqlari va PL/SQL buyruqlari shu yerda yoziladi.
+
+  BEGIN
+  -- Hisob-kitoblar yoki amallar bajariladi
+  DBMS_OUTPUT.PUT_LINE('Natija: ' || (x + y));
+
+
+Xatolarni ushlash qismi (optional): Bu qismda har qanday xatolik yuzaga kelganda 
+unga qanday javob berilishi kerakligi ko'rsatiladi. EXCEPTION yordamida ishlatiladi.
+
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('Xatolik yuz berdi');
+END;
+
+
+To'liq anonim blok quyidagicha ko'rinadi:
+
+DECLARE
+  x NUMBER := 10;
+  y NUMBER := 20;
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Natija: ' || (x + y));
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('Xato sodir bo‘ldi');
+END;
+/
+
+
+Anonim blokning asosiy xususiyatlari:
+
+Bir martalik bajarish: Anonim blok faqat bir marta ishlatiladi va saqlanmaydi.
+
+Ixtiyoriy deklaratsiya va xatolarni ushlash: Deklaratsiya va xatolarni ushlash 
+qismi zarur bo'lganda qo'shiladi, bo'lmasa ham ishlashi mumkin.
+
+SQL va PL/SQL buyruqlarining kombinatsiyasi: SQL buyrug'i PL/SQL buyruqlari 
+bilan birlashtirilib, ko'p qirrali dasturiy mantiq tuzish imkonini beradi.
+
+
