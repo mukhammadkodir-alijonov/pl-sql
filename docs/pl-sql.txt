@@ -80,3 +80,4 @@ Bytecode bajariladi:
 
 SQL Engine SQL buyruqlarni bajaradi va natijani PL/SQL Engine ga qaytaradi.
 PL/SQL Engine dastur bajarilishini davom ettiradi.
+
